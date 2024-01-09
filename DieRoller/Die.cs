@@ -31,19 +31,23 @@ namespace DieRoller
         /// <summary>
         /// keep track of when the die is rolled, makes sure the number that comes 
         /// up is random, and sets the number as the new <see cref="FaceValue"/>
+        /// assuming the current die roll isn't being held
         /// </summary>
         /// <returns> the new rolled number
         public byte Roll()
         {
-            //Generate random number
-            Random random = new Random();
-            byte newValue = (byte)random.Next(1, 7);
+            if (!isHeld) //if the hold is not active, random die numbers will continue to generate
+            {
+                //Generate random number
+                Random random = new Random();
+                byte newValue = (byte)random.Next(1, 7);
 
-            //set to face value
-            FaceValue = newValue;
-
+                //set to face value
+                FaceValue = newValue;
+            }
+            
             //return new number
-            return newValue;
+            return FaceValue;
         }
         
     }
