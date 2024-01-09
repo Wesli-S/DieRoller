@@ -10,14 +10,18 @@ namespace DieRoller
     {
         /// <summary>
         /// represents a single 6 sided die (1 - 6)
+        /// represents the created die and rolls it to start with a random number
         /// </summary>
-        
+        public Die() 
+        {
+            Roll();
+        }
         //set number of sides for die
 
         /// <summary>
-        /// Face up value(the number that the player rolled)
+        /// Current face up value(the number that the player rolled)
         /// </summary>
-        public byte FaceValue { get; set; }
+        public byte FaceValue { get; private set; } //making the set private means it can't be tampered with
 
         /// <summary>
         /// keeps track of when the die is held
