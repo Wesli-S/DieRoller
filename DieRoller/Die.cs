@@ -8,6 +8,13 @@ namespace DieRoller
 {
     public class Die
     {
+        private static Random _random;
+
+        static Die()
+        {
+            _random = new Random();
+        }
+
         /// <summary>
         /// represents a single 6 sided die (1 - 6)
         /// represents the created die and rolls it to start with a random number
@@ -39,8 +46,7 @@ namespace DieRoller
             if (!isHeld) //if the hold is not active, random die numbers will continue to generate
             {
                 //Generate random number
-                Random random = new Random();
-                byte newValue = (byte)random.Next(1, 7);
+                byte newValue = (byte)_random.Next(1, 7);
 
                 //set to face value
                 FaceValue = newValue;
